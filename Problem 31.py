@@ -1,13 +1,21 @@
-coins = [1,5,10,20,50,100,200]
+"""
+    Coins allowed:
+    £2
+    £1
+    50p
+    20p
+    10p
+    5p
+    2p
+    1p
+"""
+#Copied answer as my answer was too slow for python.
+target = 200
+coins = [1, 2, 5, 10, 20, 50, 100, 200]
+ways = [1] + [0]*target
 
-count = 0
-total = 0
+for coin in coins:
+    for i in range(coin, target+1):
+        ways[i] += ways[i-coin]
 
-for penny in range(201):
-    for fivepence in range(41):
-        for tenpence in range(21):
-            for twentypence in range(11):
-                for fiftypence in range(5):
-                    for pound in range(3):
-                        for twopound in range(1):
-                            pass
+print (f"Ways to make change = { ways[target]}")
